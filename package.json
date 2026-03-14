@@ -1,0 +1,75 @@
+{
+  "name": "@esaio/pplog-mcp-server",
+  "version": "0.1.0",
+  "mcpName": "io.github.esaio/pplog",
+  "description": "Official MCP server for pplog - STDIO transport version",
+  "main": "bin/index.js",
+  "type": "module",
+  "exports": {
+    ".": "./bin/index.js",
+    "./tools": "./bin/tools/index.js",
+    "./resources": "./bin/resources/index.js",
+    "./prompts": "./bin/prompts/index.js",
+    "./context": "./bin/context/mcp-context.js"
+  },
+  "bin": {
+    "pplog-mcp-server": "bin/index.js"
+  },
+  "files": [
+    "bin",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esaio/pplog-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/esaio/pplog-mcp-server/issues"
+  },
+  "homepage": "https://github.com/esaio/pplog-mcp-server#readme",
+  "scripts": {
+    "build": "tsdown && npm run bin-check",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:release": "npm run test:run && npm run type-check && npm run lint",
+    "lint": "biome check . --error-on-warnings",
+    "lint:fix": "biome check --write .",
+    "type-check": "tsc --noEmit",
+    "bin-check": "node -e \"if (!require('fs').existsSync('./bin/index.js')) { console.error('Error: ./bin/index.js does not exist. Please run npm run build first.'); process.exit(1); }\"",
+    "update-pplog-api": "openapi-typescript ../pplog/api/openapi.yaml --output src/generated/api-types.ts && npm run lint:fix"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "pplog",
+    "poem"
+  ],
+  "author": "esa LLC",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "openapi-fetch": "^0.17.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@types/node": "^24.12.0",
+    "@vitest/coverage-v8": "^4.0.5",
+    "openapi-typescript": "^7.9.1",
+    "tsdown": "^0.21.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^4.0.5"
+  },
+  "engines": {
+    "node": ">=24.14.0",
+    "npm": ">=11.7.0"
+  }
+}

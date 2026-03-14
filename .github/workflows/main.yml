@@ -1,0 +1,47 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+env:
+  NODE_VERSION: 24.14.0
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Run linting
+        run: |
+          output=$(npm run lint 2>&1)
+          echo "$output"
+          if echo "$output" | grep -q "schema version does not match"; then
+            echo "::error::Biome schema version mismatch detected. Please run 'npx biome migrate --write' to update biome.json"
+            exit 1
+          fi
+      - name: Run type checking
+        run: npm run type-check
+      - name: Check package.json version and package-log.json version are same
+        run: |
+          if [ "$(node -pe "require('./package.json').version")" != "$(node -pe "require('./package-lock.json').version")" ]; then
+            echo "::error::package.json version and package-lock.json version are different"
+            exit 1
+          fi
+      - name: Run tests
+        run: npm run test:coverage
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: coverage
+          path: coverage/
+      - name: Build
+        run: npm run build

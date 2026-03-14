@@ -1,0 +1,46 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.esaio/pplog",
+  "title": "pplog",
+  "description": "Official MCP server for pplog - a poem sharing service",
+  "repository": {
+    "url": "https://github.com/esaio/pplog-mcp-server",
+    "source": "github"
+  },
+  "version": "__VERSION__",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@esaio/pplog-mcp-server",
+      "version": "__VERSION__",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "PPLOG_ACCESS_TOKEN",
+          "description": "Access token for pplog API authentication",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true
+        }
+      ]
+    },
+    {
+      "registryType": "oci",
+      "identifier": "ghcr.io/esaio/pplog-mcp-server:__VERSION__",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "PPLOG_ACCESS_TOKEN",
+          "description": "Access token for pplog API authentication",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
