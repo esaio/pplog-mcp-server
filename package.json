@@ -43,7 +43,7 @@
     "lint:fix": "biome check --write .",
     "type-check": "tsc --noEmit",
     "bin-check": "node -e \"if (!require('fs').existsSync('./bin/index.js')) { console.error('Error: ./bin/index.js does not exist. Please run npm run build first.'); process.exit(1); }\"",
-    "update-pplog-api": "openapi-typescript ../pplog/api/openapi.yaml --output src/generated/api-types.ts && npm run lint:fix"
+    "update-pplog-api": "openapi-typescript ../pplog/swagger/v1/swagger.yaml --output src/generated/api-types.ts && npm run lint:fix"
   },
   "keywords": [
     "mcp",
