@@ -53,10 +53,6 @@ export const createPoemSchema = z.object({
   content: z
     .string()
     .describe("Poem content (first line is title, rest is body)"),
-  image_base64: z
-    .string()
-    .optional()
-    .describe("Base64 encoded image data (optional)"),
 });
 
 export async function getPoem(
@@ -123,7 +119,6 @@ export async function createPoem(
     const { data, error, response } = await client.POST("/v1/poems", {
       body: {
         content: args.content,
-        ...(args.image_base64 && { image_base64: args.image_base64 }),
       },
     });
 
