@@ -14,7 +14,7 @@ This MCP server provides seamless integration between AI assistants and [pplog](
 
 - `get-poem` - Retrieve a poem by ID
 - `search-poems` - Search poems with advanced query syntax (date filtering, AND/OR operators, exclusion, etc.)
-- `create-poem` - Create a new poem with optional image attachment
+- `create-poem` - Create a new poem
 
 ## MCP Client Configuration
 
