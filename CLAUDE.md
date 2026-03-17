@@ -59,7 +59,7 @@ When extending functionality, new tools and resources should be registered with 
 The server provides 3 tools for interacting with pplog:
 - `get-poem`: Retrieve a poem by ID
 - `search-poems`: Search poems with query syntax support
-- `create-poem`: Create a new poem with optional image attachment
+- `create-poem`: Create a new poem
 
 Resources and prompts have empty setup functions (pplog does not use them).
 
