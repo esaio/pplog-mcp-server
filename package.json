@@ -1,6 +1,6 @@
 {
   "name": "@esaio/pplog-mcp-server",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "mcpName": "io.github.esaio/pplog",
   "description": "Official MCP server for pplog - STDIO transport version",
   "main": "bin/index.js",
