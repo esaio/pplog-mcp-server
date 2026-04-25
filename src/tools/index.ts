@@ -47,7 +47,8 @@ export function setupTools(server: McpServer, context: MCPContext): void {
     "create-poem",
     {
       title: "Create Poem",
-      description: "Creates a new poem in pplog.",
+      description:
+        "Creates a pplog poem: a casual short note (not literary verse). Posting hides your previous poem from other readers.",
       inputSchema: createPoemSchema.shape,
       annotations: {
         destructiveHint: true,
