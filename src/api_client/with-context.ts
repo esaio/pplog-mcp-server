@@ -15,6 +15,7 @@ export async function withContext<T extends unknown[], R>(
     client = createPplogClient(
       context.apiAccessToken as string,
       context.apiBaseUrl as string,
+      context.logger,
     );
   } else {
     throw new Error(
