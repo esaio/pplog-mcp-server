@@ -12,8 +12,6 @@ import {
 } from "./poems.js";
 
 export function setupTools(server: McpServer, context: MCPContext): void {
-  console.error("Setting up MCP tools...");
-
   server.registerTool(
     "get-poem",
     {
