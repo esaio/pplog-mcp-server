@@ -20,6 +20,8 @@ export function setupTools(server: McpServer, context: MCPContext): void {
       inputSchema: getPoemSchema.shape,
       annotations: {
         readOnlyHint: true,
+        destructiveHint: false,
+        openWorldHint: false,
       },
     },
     async (params: z.infer<typeof getPoemSchema>) =>
@@ -35,6 +37,8 @@ export function setupTools(server: McpServer, context: MCPContext): void {
       inputSchema: searchPoemsSchema.shape,
       annotations: {
         readOnlyHint: true,
+        destructiveHint: false,
+        openWorldHint: false,
       },
     },
     async (params: z.infer<typeof searchPoemsSchema>) =>
@@ -49,7 +53,9 @@ export function setupTools(server: McpServer, context: MCPContext): void {
         "Creates a pplog poem: a casual short note (not literary verse). Posting hides your previous poem from other readers.",
       inputSchema: createPoemSchema.shape,
       annotations: {
+        readOnlyHint: false,
         destructiveHint: true,
+        openWorldHint: true,
       },
     },
     async (params: z.infer<typeof createPoemSchema>) =>
