@@ -55,7 +55,7 @@ export function setupTools(server: McpServer, context: MCPContext): void {
       annotations: {
         readOnlyHint: false,
         destructiveHint: true,
-        openWorldHint: false,
+        openWorldHint: true,
       },
     },
     async (params: z.infer<typeof createPoemSchema>) =>
