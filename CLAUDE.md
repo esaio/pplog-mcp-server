@@ -76,7 +76,6 @@ This package exports setup functions for use by `pplog-mcp-server-remote`:
 ### Test Writing Principles
 
 When writing tests, follow these principles for maintainable and readable test code:
-
 1. **Import Order Optimization**
    - Type imports first (`import type`)
    - External dependencies next
@@ -108,4 +107,4 @@ When writing tests, follow these principles for maintainable and readable test c
 
 ### Example Test Pattern
 
-- READ src/__tests__/index.test.ts
+- READ src/**tests**/index.test.ts
