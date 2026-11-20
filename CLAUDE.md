@@ -46,6 +46,7 @@ This is an MCP (Model Context Protocol) server implementation for pplog, using S
 ### MCP Server Pattern
 
 The server follows the standard MCP pattern:
+
 1. Validate configuration on startup
 2. Create McpServer instance with name and version
 3. Initialize StdioServerTransport for STDIO communication
@@ -57,6 +58,7 @@ When extending functionality, new tools and resources should be registered with 
 ### Tools
 
 The server provides 3 tools for interacting with pplog:
+
 - `get-poem`: Retrieve a poem by ID
 - `search-poems`: Search poems with query syntax support
 - `create-poem`: Create a new poem
@@ -66,6 +68,7 @@ Resources and prompts have empty setup functions (pplog does not use them).
 ### Package Exports
 
 This package exports setup functions for use by `pplog-mcp-server-remote`:
+
 - `@esaio/pplog-mcp-server/tools` → `setupTools(server, context)`
 - `@esaio/pplog-mcp-server/resources` → `setupResources(server, context)`
 - `@esaio/pplog-mcp-server/prompts` → `setupPrompts(server, context)`
@@ -76,6 +79,7 @@ This package exports setup functions for use by `pplog-mcp-server-remote`:
 ### Test Writing Principles
 
 When writing tests, follow these principles for maintainable and readable test code:
+
 1. **Import Order Optimization**
    - Type imports first (`import type`)
    - External dependencies next
